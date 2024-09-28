@@ -88,7 +88,28 @@ if end_conversation:
         print("Exporting conversation history...")
         for message in st.session_state.messages:
             f.write(f"{message.role}: {message.content}\n")
-    # Clear conversation history or disable further input
+
+    # Clear conversation history
+    conversation_log = st.session_state.messages
     st.session_state.messages = []
 
-print(st.session_state.messages)
+    # Read the conversation log from the text file
+    with open('conversation_histories/conversation_history.txt', 'r') as f:
+        conversation_text = f.read()
+
+    # Use the Mistral API to generate a story based on the conversation log
+    story_prompt = f"Write a short, evocative story based on the following conversation log. Use markdown formatting where appropriate:\n\n{conversation_text}\n\nStory:"
+    story_response = client.chat(
+        model=st.session_state["mistral_model"],
+        messages=[ChatMessage(role="user", content=story_prompt)],
+    )
+    story = story_response.choices[0].message.content
+
+    # Format the story as markdown
+    st.markdown(story)
+
+        # Save the story to a markdown file
+    with open('stories/story.md', 'w') as f:
+        f.write(story)
+
+
