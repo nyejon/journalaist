@@ -5,6 +5,11 @@ from PIL import Image
 
 import prompts
 st.title("Your Personal JournalAIst")
+st.write("""
+        Hi! Did you have a cool experience recently? Maybe a fun trip? 
+        Upload some photos, let me ask you a few question,
+        and I'll help you write a story about it!
+""")
 
 uploaded_files = st.file_uploader("Choose images...", type=["jpg", "png"], accept_multiple_files=True)
 if uploaded_files:
