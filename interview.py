@@ -61,16 +61,16 @@ def interview(client: Mistral):
             )
 
             picture_response = ""
-            message_placeholder = st.empty()
+            #message_placeholder = st.empty()
             if file_info:
                 for response in file_info:
                     picture_response += response.data.choices[0].delta.content or ""
-                    message_placeholder.markdown(picture_response + "▌")
-                message_placeholder.markdown(picture_response)
+                    #message_placeholder.markdown(picture_response + "▌")
+                #message_placeholder.markdown(picture_response)
             else:
                 # Handle the case where response_generator is None
                 st.error("Failed to generate response")
-                message_placeholder.markdown(picture_response)
+                #message_placeholder.markdown(picture_response)
 
             st.session_state.picture_messages.append(
                 AssistantMessage(content=picture_response)
@@ -116,10 +116,10 @@ def interview(client: Mistral):
 
 
         #TODO: Comment out when we don't want to render the picture description
-        for message in st.session_state.picture_messages:
-            if message.role != "system":  # Skip system messages for UI
-                with st.chat_message(message.role):  # Use dot notation here
-                    st.markdown(message.content)  # And here
+        #for message in st.session_state.picture_messages:
+        #    if message.role != "system":  # Skip system messages for UI
+        #        with st.chat_message(message.role):  # Use dot notation here
+        #            st.markdown(message.content)  # And here
 
         for message in st.session_state.messages:
             if message.role != "system":  # Skip system messages for UI
