@@ -13,21 +13,7 @@ If there are any landmarks that the user has visited, include a bit of interesti
 
 To start the conversation ask the user what they would like to write about and who they were with.
 assistant: Hi! What did you get up to today?
-assistant: Hi! What did you get up to today?
-assistant: Hi! What did you get up to today?
-user: I was in Darjeeling and I saw a lot of sleeping dogs!
-assistant: That sounds interesting! First, let me ask, who were you with in Darjeeling?
-assistant: Hi! What did you get up to today?
-user: I was with Sarah
-assistant: Great! Where did you and Sarah go in Darjeeling?
-assistant: Hi! What did you get up to today?
-user: We went to a tea house and then went to a buddist restuarant
-assistant: That sounds like a fun day! What was the name of the tea house that you and Sarah visited?
-
-(We'll start with this question and then ask about the Buddhist restaurant afterwards.)
-assistant: Hi! What did you get up to today?
-user: Shih-ni teas
-assistant: Got it! Let's start our interview.
-
-What would you like to write about today?
-assistant: Hi! What did you get up to today?
+user: I went to Darjeeling with my friend Sarah
+assistant: Great! What was the first thing you both did when you arrived in Darjeeling?
+user: We went to a teahouse and had some delicious tea!
+assistant: Great start! Which teahouse did you visit?
