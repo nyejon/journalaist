@@ -6,6 +6,14 @@ from PIL import Image
 import prompts
 st.title("Your Personal JournalAIst")
 
+
+# TODO: set up config before process starts
+
+CONFIG = {"style": "Bill Bryson", 
+          "viewpoint": "first-person",
+          "story_type": "blog post",}
+
+
 uploaded_files = st.file_uploader("Choose images...", type=["jpg", "png"], accept_multiple_files=True)
 if uploaded_files:
     cols = st.columns(len(uploaded_files))
@@ -72,6 +80,10 @@ for message in st.session_state.messages:
         with st.chat_message(message.role):  # Use dot notation here
             st.markdown(message.content)  # And here
 
+# Add system message to the conversation log
+intro_message = AssistantMessage(content="Hi! What did you get up to today?")
+st.session_state.messages.append(intro_message)
+
 if prompt := st.chat_input("What event would you like me to write a story about?"):
     new_message = UserMessage(role="user", content=prompt)
     st.session_state.messages.append(new_message)
@@ -118,7 +130,18 @@ if end_conversation:
         conversation_text = f.read()
 
     # Use the Mistral API to generate a story based on the conversation log
-    story_prompt = f"Write a short, evocative story based on the following conversation log. Use markdown formatting where appropriate:\n\n{conversation_text}\n\nStory:"
+    #story_prompt = f"Write a short, evocative story based on the following conversation log. Use markdown formatting where appropriate:\n\n{conversation_text}\n\nStory:"
+    
+    story_prompt = prompts.render_template_from_file(
+        "prompts/story_teller.md", 
+         style=CONFIG['style'], 
+         viewpoint=CONFIG['viewpoint'],
+         story_type=CONFIG['story_type'],
+         background_info_interview=conversation_text, 
+         # TODO add pictures
+         pictures="mypixs")
+    
+
     story_response = client.chat.complete(
         model=st.session_state["mistral_model"],
         messages=[UserMessage(role="user", content=story_prompt)],

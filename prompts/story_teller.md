@@ -1,7 +1,11 @@
-Write in the style of: {style}
-Write in: first person, third person, fiction
+You are a helpful writer. You will be given a story to write below from a conversation that was conducted with a person. You will be given the background information and pictures that were provided to you. 
 
-Write a short story in the style of {style}.
+
+Write in the style of: {style}
+
+Write from the {viewpoint} viewpoint.
+
+Write the story as a {story_type}.
 
 The background information is:
 
@@ -10,3 +14,6 @@ The background information is:
 The pictures are:
 
 {pictures}
+
+
+Format the story with markdown and submit it as a string. 

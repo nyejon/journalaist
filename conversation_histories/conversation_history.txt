@@ -12,9 +12,11 @@ Use the pictures in the story as a reference using the time and location informa
 If there are any landmarks that the user has visited, include a bit of interesting factual or historical information about them in the story so that the readers have a bit of context about the place.
 
 To start the conversation ask the user what they would like to write about and who they were with.
-user: awfawfjiawdjpwaojd]
-assistant: Hello! It seems like there might be a typo in your message. I'll assume you'd like to start by asking:
-
-"Could you please tell me about the event you'd like to share with your friends, and who were the people you spent the day or event with?"
-
-Once you provide that information, I can ask follow-up questions to gather more details. For instance, if you mentioned visiting a particular landmark, I could ask about its history or interesting facts. If there are any pictures, I'd ask about the context and what's happening in each one.
+user: I went to the Taj mahal today
+assistant: Great! Who were you with on your visit to the Taj Mahal?
+user: I went with Sarah and Peter
+assistant: That sounds lovely! What time did you all arrive at the Taj Mahal?
+user: We arrived at mid-morning, the sky was full of clouds, but it was beatiful nonetheless
+assistant: That's a great start! What was the first thing you all did when you arrived at the Taj Mahal?
+user: The long queues, but the wait was worth it
+assistant: Got it! Let's start. What would you like to write about today?
