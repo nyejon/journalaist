@@ -6,8 +6,8 @@ __pycache__/
 # C extensions
 *.so
 .pixi
-/stories
-/conversation_histories
+# /stories
+# /conversation_histories
 
 # Distribution / packaging
 .Python
