@@ -2,10 +2,8 @@
 from mistralai import Mistral, UserMessage, SystemMessage, AssistantMessage
 import streamlit as st
 import os
-from PIL import Image
 
 import interview, story_generation
-import mistral_files
 import prompts
 
 def reset_state():
@@ -37,12 +35,6 @@ if "mistral_model" not in st.session_state:
 if "pixtral_model" not in st.session_state:
     st.session_state["pixtral_model"] = "pixtral-12b-2409"
 
-# Add system prompt input
-if "system_prompt" not in st.session_state:
-    # Load prompt from file
-    st.session_state["system_prompt"] = prompts.render_template_from_file(
-        "prompts/interview.md"
-    )
 # st.text_input('System Prompt', value=st.session_state["system_prompt"], key="system_prompt")
 
 if "messages" not in st.session_state:
@@ -53,6 +45,9 @@ if "picture_messages" not in st.session_state:
 
 if "uploaded_files" not in st.session_state:
     st.session_state.uploaded_files = []
+
+if "photo_upload" not in st.session_state:
+    st.session_state.photo_upload = None
 
 if 'CONFIG' not in st.session_state:
         st.session_state.CONFIG = {
