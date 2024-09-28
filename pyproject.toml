@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pillow-ai"
+version = "0.1.0"
+description = ""
+authors = ["Axel <axel@axel.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.38.0"
+mistralai = "^1.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
