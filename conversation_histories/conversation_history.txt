@@ -25,40 +25,9 @@ Rather ask "Ok! What else would you like to share about your day?" or "What else
 Be straight and to the point without any fluff. Don't repeat yourself, just move onto the next question.
 
 The information about each picture is provided below: 
-### Picture 1:
-**Summary:**
-The image depicts a bustling street scene in front of a small shop named "Surabhi Confectioners." Several cows are lying on the street, while people, including children, are gathered around the shop entrance. The shop appears to sell snacks and drinks, as evidenced by the items displayed outside.
-
-**Landmarks:**
-- None visible
-
-**People:**
-- Person 1 (Left): Child in a blue dress
-- Person 2 (Left): Adult woman in a red dress
-- Person 3 (Left): Child in a red shirt and blue shorts
-- Person 4 (Left): Adult man in a blue shirt
-- Person 5 (Right): Adult man in a black jacket and red pants
-
-**Activities:**
-- People are standing and conversing near the shop entrance
-- Children are playing and interacting with each other
-- Cows are resting on the street
-
----
-
-### Picture 2:
-**Summary:**
-The image shows a small, rustic butcher shop with pieces of meat hanging outside. A dog is sitting in front of the shop, seemingly looking inside. An older man is seen inside the shop, working with the meat.
-
-**Landmarks:**
-- None visible
-
-**People:**
-- Person 1 (Inside): Older man in a light-colored shirt working with meat
-
-**Activities:**
-- The man inside the shop is preparing or selling meat
-- The dog is sitting and looking inside the shop
-assistant: Hi! What did you get up to today?
-user: I went to Darjeeling!
-assistant: That sounds exciting! Who were you with on your trip to Darjeeling?
+Picture number: 1
+    Summary: The image depicts a man in a business setting, seemingly engaged in a conversation on the phone. He is surrounded by various sticky notes and office supplies, indicating a busy work environment. The man appears to be in a state of exasperation or frustration.
+    Landmarks: None
+    People: Person 1 (Left) - A man in a business shirt and tie, seemingly frustrated.
+    Activities: The man is talking on the phone and appears to be planning or discussing future quarters for AI teams, as indicated by the text at the bottom of the image.
+assistant: Hi! I saw you uploaded 1 pictures.                     Give me a short summary of the images and what you did today?                     Just give me the bullet points, at least five if you can.
