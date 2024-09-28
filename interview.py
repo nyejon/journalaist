@@ -12,9 +12,8 @@ import prompts
 def interview(client: Mistral):
     st.title("Your Personal JournalAIst")
     st.write("""
-            Hi! Did you have a cool experience recently? Maybe a fun trip or event?
-            Upload some photos, let me ask you a few questions,
-            and I'll help you write a story about it!
+            Hi! What did you get up to today?  
+            Upload some pictures if you wish, and give me a short description of your day. 
     """)
 
     # Add system prompt as a UserMessage if it doesn't exist

@@ -95,7 +95,7 @@ def story_generation(client):
             # TODO add pictures
             n_pictures=st.session_state.n_pictures)
 
-        print(story_prompt)
+        #print(story_prompt)
         client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
         story_response = client.chat.complete(
             model=st.session_state["mistral_model"],
@@ -114,7 +114,5 @@ def story_generation(client):
         with st.container():
             st.markdown(story, unsafe_allow_html=True)
 
-        # Format the story as markdown
-        #st.markdown(story)
 
  
