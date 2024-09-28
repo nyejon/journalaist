@@ -108,10 +108,19 @@ def interview(client: Mistral):
             st.session_state.messages.insert(
                 0, SystemMessage(content=st.session_state["system_prompt"])
             )
+
+            if st.session_state.n_pictures > 0:
+                intro_message = AssistantMessage(
+                    content=f"Hi! I saw you uploaded {st.session_state.n_pictures} pictures. \
+                    Give me a short summary of the images and what you did today? \
+                    Just give me the bullet points, at least five if you can."
+                )
+            else:
             # Add system message to the conversation log
-            intro_message = AssistantMessage(
-                content="Hi! What did you get up to today?"
-            )
+                intro_message = AssistantMessage(
+                    content="Hi! Please give me a short summary of what you did today? \
+                            Just give me the bullet points, at least five if you can."
+                )
             st.session_state.messages.append(intro_message)
 
 

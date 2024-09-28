@@ -25,66 +25,40 @@ Rather ask "Ok! What else would you like to share about your day?" or "What else
 Be straight and to the point without any fluff. Don't repeat yourself, just move onto the next question.
 
 The information about each picture is provided below: 
-### Image Descriptions
+### Picture 1:
+**Summary:**
+The image depicts a bustling street scene in front of a small shop named "Surabhi Confectioners." Several cows are lying on the street, while people, including children, are gathered around the shop entrance. The shop appears to sell snacks and drinks, as evidenced by the items displayed outside.
 
-**Image 1:**
-- The image shows a street scene with several cows lying on the ground in front of a small shop. People are standing and sitting nearby, engaging in various activities.
+**Landmarks:**
+- None visible
 
-**Image 2:**
-- The image depicts a dog sitting outside a small butcher shop. Inside the shop, a person is working with meat, which is hanging and displayed prominently.
+**People:**
+- Person 1 (Left): Child in a blue dress
+- Person 2 (Left): Adult woman in a red dress
+- Person 3 (Left): Child in a red shirt and blue shorts
+- Person 4 (Left): Adult man in a blue shirt
+- Person 5 (Right): Adult man in a black jacket and red pants
 
-### Information Extraction
+**Activities:**
+- People are standing and conversing near the shop entrance
+- Children are playing and interacting with each other
+- Cows are resting on the street
 
-**Picture number: 1**
-    Summary:
-    - The image depicts a street scene with several cows resting in front of a small shop. People are engaging in various activities nearby.
-    Landmarks:
-    - None visible
-    People:
-    - Person 1 (Left): A child in a blue dress
-    - Person 2 (Left): A woman in a red dress
-    - Person 3 (Left): A man in a blue shirt
-    - Person 4 (Right): A person in a black jacket
-    Activities:
-    - People are standing, sitting, and interacting with each other
+---
 
-**Picture number: 2**
-    Summary:
-    - The image shows a dog sitting outside a small butcher shop. Inside, a person is working with meat.
-    Landmarks:
-    - None visible
-    People:
-    - Person 1 (Inside): A person working with meat
-    Activities:
-    - The person inside the shop is handling meat
-    - The dog is sitting outside the shop
+### Picture 2:
+**Summary:**
+The image shows a small, rustic butcher shop with pieces of meat hanging outside. A dog is sitting in front of the shop, seemingly looking inside. An older man is seen inside the shop, working with the meat.
+
+**Landmarks:**
+- None visible
+
+**People:**
+- Person 1 (Inside): Older man in a light-colored shirt working with meat
+
+**Activities:**
+- The man inside the shop is preparing or selling meat
+- The dog is sitting and looking inside the shop
 assistant: Hi! What did you get up to today?
-user: I went to darjeeiling. 
-I took a train to get there with Jon and Axel. 
-
-There were a lot of dogs and we drank a lot of tea
-assistant: Great! Let's start with your trip to Darjeeling. What was the train ride like with Jon and Axel?
-user: It was scary! There were steep cliffs
-assistant: Got it! Let's start with your trip to Darjeeling. Who were you with, Jon and Axel? What made you decide to go to Darjeeling?
-user: I love tea. I wanted to go to the source of the tea
-assistant: That sounds lovely! Who were you with on this trip?
-user: Jon and Axel
-assistant: Thanks! Let's dive into your adventure. First, can you tell me more about Jon and Axel? How do you know them?
-user: I worked with Axel and Jon is a friend
-assistant: Got it! How do you know Jon?
-user: We ran a marathon together
-assistant: That sounds exciting! When and where did this marathon take place?
-user: In Berlin. We are getting sidtracked now
-assistant: Got it! Let's focus back on your trip to Darjeeling. Can you describe the moment you first arrived in Darjeeling? What did you see and feel?
-user: I saw a lot of dogs! And I ate some curry
-assistant: Great! Let's talk about the dogs first. What kinds of dogs did you see, and what were they doing?
-user: Mutts mostly, but they were friendly!
-assistant: Oh, friendly mutts are always a joy to encounter. What were the dogs doing while you were there? Were they playing, resting, or interacting with people?
-user: Mostly just laying around and begging for scraps!
-assistant: Oh, I see! So, what was the curry like? Did you enjoy it?
-user: It was spicy! 
-assistant: Great! Who did you enjoy the curry with? Jon and Axel, or did you meet someone new?
-user: Both of them, and we met a guy called Vinesh
-assistant: Got it! Let's talk more about Vinesh. How did you meet him?
-user: At the curry restuarant. He was feeding a dog
-assistant: How did you meet Vinesh at the curry restaurant? Did he approach you or did you start a conversation with him?
+user: I went to Darjeeling!
+assistant: That sounds exciting! Who were you with on your trip to Darjeeling?
