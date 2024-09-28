@@ -14,13 +14,43 @@ st.write("""
 """)
 
 
-# TODO: set up config before process starts
+# # TODO: set up config before process starts
 
-CONFIG = {"style": "Bill Bryson", 
-          "viewpoint": "first-person",
-          "story_type": "blog post",}
+# CONFIG = {"style": "Bill Bryson", 
+#           "viewpoint": "first-person",
+#           "story_type": "blog post",}
 
+if 'CONFIG' not in st.session_state:
+    st.session_state.CONFIG = {
+        "style": "Bill Bryson",
+        "viewpoint": "first-person",
+        "story_type": "blog post",
+    }
 
+# Create columns for horizontal layout
+col1, col2, col3 = st.columns(3)
+
+# Create radio buttons for each configuration option in separate columns
+with col1:
+    st.session_state.CONFIG["style"] = st.radio(
+        "Select the writing style:",
+        ["Bill Bryson", "Hemingway", "J.K. Rowling"],
+        index=["Bill Bryson", "Hemingway", "J.K. Rowling"].index(st.session_state.CONFIG["style"]),
+    )
+
+with col2:
+    st.session_state.CONFIG["viewpoint"] = st.radio(
+        "Select the viewpoint:",
+        ["first-person", "second-person", "third-person"],
+        index=["first-person", "second-person", "third-person"].index(st.session_state.CONFIG["viewpoint"]),
+    )
+
+with col3:
+    st.session_state.CONFIG["story_type"] = st.radio(
+        "Select the story type:",
+        ["blog post", "short story", "article"],
+        index=["blog post", "short story", "article"].index(st.session_state.CONFIG["story_type"]),
+    )
 
 
 # Function to reset the state
@@ -149,9 +179,9 @@ if end_conversation:
     
     story_prompt = prompts.render_template_from_file(
         "prompts/story_teller.md", 
-         style=CONFIG['style'], 
-         viewpoint=CONFIG['viewpoint'],
-         story_type=CONFIG['story_type'],
+         style=st.session_state.CONFIG['style'], 
+         viewpoint=st.session_state.CONFIG['viewpoint'],
+         story_type=st.session_state.CONFIG['story_type'],
          background_info_interview=conversation_text, 
          # TODO add pictures
          n_pictures=n_pictures)
