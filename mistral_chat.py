@@ -3,10 +3,7 @@ from mistralai.models.chat_completion import ChatMessage
 import streamlit as st
 import os
 
-st.title("Mistral Chat")
-
-
-
+st.title("Your Personal JournalAIst")
 
 
 # Function to reset the state
