@@ -1,4 +1,5 @@
 import base64
+from io import BytesIO
 from PIL import Image
 import prompts
 from mistralai import (
@@ -12,7 +13,13 @@ from mistralai import (
 PIXTRAL_TEMPERATURE = 0.3
 
 def encode_image_base64(image_file):
-    return base64.b64encode(image_file.getvalue()).decode("utf-8")
+    img = Image.open(image_file)
+    img = img.resize((1024, int(1024 * img.height / img.width)))
+    img_bytes = BytesIO()
+    img.save(img_bytes, format="JPEG")
+    img_bytes.seek(0)
+    return base64.b64encode(img_bytes.read()).decode("utf-8")
+
 
 
 def handle_files(files: list, client: Mistral, model: str):
