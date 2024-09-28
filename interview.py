@@ -12,9 +12,10 @@ import prompts
 
 def interview(client: Mistral):
     st.title("Your Personal JournalAIst")
+    st.subheader("Generate a personal story by uploading pictures and answering a few questions.")
     st.write("""
-            Hi! What did you get up to today?  
-            Upload some pictures if you wish, and give me a short description of your day. 
+            Hi! What did you get up to today?
+            Upload some pictures if you wish, and give me a short description of your day.
     """)
 
     if st.session_state.photo_upload is None:
