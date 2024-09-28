@@ -1,10 +1,18 @@
 from mistralai import Mistral, UserMessage, SystemMessage, AssistantMessage
 import streamlit as st
 import os
+from PIL import Image
 
 import prompts
 
 st.title("Mistral Chat")
+
+uploaded_files = st.file_uploader("Choose images...", type=["jpg", "png"], accept_multiple_files=True)
+if uploaded_files:
+    cols = st.columns(len(uploaded_files))
+    for col, uploaded_file in zip(cols, uploaded_files):
+        image = Image.open(uploaded_file)
+        col.image(image, use_column_width=True)
 
 
 # Function to reset the state
