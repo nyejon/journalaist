@@ -51,8 +51,8 @@ def story_generation(client):
     with col1:
         st.session_state.CONFIG["style"] = st.radio(
             "Select the writing style:",
-            ["Bill Bryson", "Hemingway", "J.K. Rowling"],
-            index=["Bill Bryson", "Hemingway", "J.K. Rowling"].index(st.session_state.CONFIG["style"]),
+            ["Bill Bryson", "Hemingway", "J.K. Rowling", "Neil Gaiman"],
+            index=["Bill Bryson", "Hemingway", "J.K. Rowling", "Neil Gaiman"].index(st.session_state.CONFIG["style"]),
         )
 
     with col2:
@@ -113,6 +113,3 @@ def story_generation(client):
         story = markdown_insert_images(story)
         with st.container():
             st.markdown(story, unsafe_allow_html=True)
-
-
- 
