@@ -5,6 +5,10 @@ import os
 
 st.title("Mistral Chat")
 
+
+
+
+
 # Function to reset the state
 def reset_state():
     for key in st.session_state:
@@ -57,8 +61,10 @@ for message in st.session_state.messages:
 if prompt := st.chat_input("What is up?"):
     new_message = ChatMessage(role="user", content=prompt)
     st.session_state.messages.append(new_message)
+
     with st.chat_message("user"):
         st.markdown(prompt)
+
 
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
@@ -71,3 +77,18 @@ if prompt := st.chat_input("What is up?"):
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
     st.session_state.messages.append(ChatMessage(role="assistant", content=full_response))
+
+
+# Add end conversation button outside of the chat input condition
+end_conversation = st.button("End Conversation")
+
+if end_conversation:
+    # Export conversation history
+    with open('conversation_history.txt', 'w') as f:
+        print("Exporting conversation history...")
+        for message in st.session_state.messages:
+            f.write(f"{message.role}: {message.content}\n")
+    # Clear conversation history or disable further input
+    st.session_state.messages = []
+
+print(st.session_state.messages)
