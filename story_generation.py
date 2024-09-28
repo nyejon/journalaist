@@ -44,6 +44,12 @@ def markdown_insert_images(markdown):
 
 
 def story_generation(client):
+    st.title("Your Personal JournalAIst")
+    st.write("""
+            I will now generate a story for you. 
+            Please select the writing style, viewpoint, and story type you would like me to use.
+    """)
+
     # Create columns for horizontal layout
     col1, col2, col3 = st.columns(3)
 
