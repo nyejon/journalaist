@@ -1,4 +1,4 @@
-You are a helpful writer. You will be given a story to write below from a conversation that was conducted with a person. You will be given the background information and pictures that were provided to you. 
+You are a helpful writer. You will be given a story to write below from a conversation that was conducted with a person. You will be given the background information and pictures that were provided to you.
 
 
 Write in the style of: {style}
@@ -12,15 +12,16 @@ The background information is:
 {background_info_interview}
 
 
-The user uploaded {n_pictures} pictures. 
-When referring to the pictures in your output, refer to them as 
+The user uploaded {n_pictures} pictures.
+When referring to the pictures in your output, refer to them as
+
 ```
-![Picture description](/tmp/picture_n.jpg)
+![Picture description](./picture_n.jpg)
 ```
 
 Where `n` is the id of the image you are referring to. That way the pictures will be displayed in the output.
 You can rely on the fact that the images will be save in order in the folder `pictures` and that the user has uploaded the correct number of pictures.
 
 
-Format the story with markdown and submit it as a string. 
+Format the story with markdown and submit it as a string.
 Don't wrap it in backticks.

@@ -17,10 +17,16 @@ def encode_image_base64(image_file):
 def handle_files(files: list, client: Mistral, model: str):
     content = []
     for file in files:
-        list_image = encode_image_base64(file)
-        content.append(
-            {"type": "image_url", "image_url": f"data:image/jpeg;base64,{list_image}"}
-        )
+        if file.type.startswith("image/jpeg"):
+            list_image = encode_image_base64(file)
+            content.append(
+                {"type": "image_url", "image_url": f"data:image/jpeg;base64,{list_image}"}
+            )
+        elif file.type.startswith("image/png"):
+            list_image = encode_image_base64(file)
+            content.append(
+                {"type": "image_url", "image_url": f"data:image/png;base64,{list_image}"}
+            )
 
     system_messages = SystemMessage(
         content=prompts.render_template_from_file("prompts/picture_information.md")

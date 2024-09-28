@@ -15,15 +15,18 @@ To start the conversation ask the user what they would like to write about and w
 assistant: Hi! What did you get up to today?
 assistant: Hi! What did you get up to today?
 assistant: Hi! What did you get up to today?
+user: We had a party
+assistant: Great! Let's start with the party. Who were you with at the party?
 assistant: Hi! What did you get up to today?
-user: I went to the Taj mahal with steve and Andy!
-assistant: That sounds like an exciting event! To start, could you tell me what time you arrived at the Taj Mahal?
-assistant: Hi! What did you get up to today?
-user: Early in the morning! Before dawn!
-assistant: Great! What was the first thing you did when you arrived at the Taj Mahal?
-assistant: Hi! What did you get up to today?
-user: The White elephants (see this image)
-assistant: Hello! I'm here to help you write a short story about your day. To start, what event or activity would you like to write about and who were you with?
+user: Ferdinand and Axel
+assistant: Got it! Let's start with the basics.
 
-(Here's a fun fact for you: The white elephants in the image are sacred in many cultures and often symbolize prosperity, wisdom, and royalty.)
+What would you like to write about today?
+assistant: Hi! What did you get up to today?
+user: There was a big cake
+assistant: Understood! Let's get started.
+
+What would you like to write about today?
+
+Hi! What did you get up to today?
 assistant: Hi! What did you get up to today?

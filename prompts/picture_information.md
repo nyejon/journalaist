@@ -1,7 +1,13 @@
-Extract the following from the images if applicable.
+Describe each image briefly.
 
-How many people are in the images and where are they located?
-What time was the picture taken?
-Is there a well known landmark in the picture?
-What are the people doing in the image.
-Is there anything interesting about the image?
+Then extract the following information:
+
+Famous landmarks, people, activities (What are the people doing?)
+
+Output the results as:
+
+Picture number: n
+    Summary:
+    Landmarks:
+    People: Person 1 (Left), Person 2 (Right) etc
+    Activities:
