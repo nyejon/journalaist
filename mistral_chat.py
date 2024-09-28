@@ -193,9 +193,6 @@ elif st.session_state.page == 'story':
         )
 
     if st.button("Start writing!"):
-
-
-
         # Export conversation history
         with open("conversation_histories/conversation_history.txt", "w") as f:
             print("Exporting conversation history...")
