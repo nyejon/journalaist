@@ -1,4 +1,4 @@
-Describe each image briefly.
+Describe each image briefly. There could be only one image.
 
 Then extract the following information:
 
