@@ -33,8 +33,9 @@ def interview(client: Mistral):
         elif upload_photos_no is True:
             st.session_state.photo_upload = False
 
+    st.session_state.n_pictures = 0
     if st.session_state.photo_upload:
-        st.session_state.n_pictures = 0
+        
         uploaded_files = st.file_uploader(
             "Choose images...", type=["jpg", "png"], accept_multiple_files=True
         )
