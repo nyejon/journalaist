@@ -1,8 +1,10 @@
+
 from mistralai import Mistral, UserMessage, SystemMessage, AssistantMessage
 import streamlit as st
 import os
 from PIL import Image
 
+import mistral_files
 import prompts
 st.title("Your Personal JournalAIst")
 st.write("""
@@ -18,15 +20,7 @@ CONFIG = {"style": "Bill Bryson",
           "viewpoint": "first-person",
           "story_type": "blog post",}
 
-n_pictures = 0
-uploaded_files = st.file_uploader("Choose images...", type=["jpg", "png"], accept_multiple_files=True)
-if uploaded_files:
-    cols = st.columns(len(uploaded_files))
-    for col, uploaded_file in zip(cols, uploaded_files):
-        n_pictures += 1
-        image = Image.open(uploaded_file)
-        col.image(image, use_column_width=True)
-        image.save(f"/tmp/picture_{n_pictures}.jpg")
+
 
 
 # Function to reset the state
@@ -81,6 +75,20 @@ if st.session_state["system_prompt"] and not any(
     st.session_state.messages.insert(
         0, SystemMessage(content=st.session_state["system_prompt"])
     )
+
+n_pictures = 0
+uploaded_files = st.file_uploader("Choose images...", type=["jpg", "png"], accept_multiple_files=True)
+if uploaded_files:
+    cols = st.columns(len(uploaded_files))
+    for col, uploaded_file in zip(cols, uploaded_files):
+        n_pictures += 1
+        image = Image.open(uploaded_file)
+        col.image(image, use_column_width=True)
+        image.save(f"/tmp/picture_{n_pictures}.jpg")
+
+    file_info = mistral_files.handle_files(uploaded_files, client, model=st.session_state["pixtral_model"])
+
+    st.session_state.messages.append(file_info)
 
 for message in st.session_state.messages:
     if message.role != "system":  # Skip system messages for UI
