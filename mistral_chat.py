@@ -38,14 +38,8 @@ client = Mistral(api_key=api_key)
 if "mistral_model" not in st.session_state:
     st.session_state["mistral_model"] = "mistral-tiny"
 
-# Always display the dropdown
-model_options = ("mistral-tiny", "mistral-small", "mistral-medium")
-st.session_state["mistral_model"] = st.selectbox(
-    "Select a model",
-    model_options,
-    index=model_options.index(st.session_state["mistral_model"]),
-    key="model_select",
-)
+# Set to large mistral model
+st.session_state["mistral_model"] = "mistral-large-latest"
 
 # Add system prompt input
 if "system_prompt" not in st.session_state:
