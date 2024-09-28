@@ -13,8 +13,8 @@ if 'page' not in st.session_state:
 if st.session_state.page == 'chat':
     st.title("Your Personal JournalAIst")
     st.write("""
-            Hi! Did you have a cool experience recently? Maybe a fun trip?
-            Upload some photos, let me ask you a few question,
+            Hi! Did you have a cool experience recently? Maybe a fun trip or event?
+            Upload some photos, let me ask you a few questions,
             and I'll help you write a story about it!
     """)
 
@@ -77,6 +77,9 @@ if st.session_state.page == 'chat':
         st.session_state.messages.insert(
             0, SystemMessage(content=st.session_state["system_prompt"])
         )
+        # Add system message to the conversation log
+        intro_message = AssistantMessage(content="Hi! What did you get up to today?")
+        st.session_state.messages.append(intro_message)
 
     st.session_state.n_pictures = 0
     uploaded_files = st.file_uploader("Choose images...", type=["jpg", "png"], accept_multiple_files=True)
@@ -101,23 +104,6 @@ if st.session_state.page == 'chat':
             with st.chat_message(message.role):  # Use dot notation here
                 st.markdown(message.content)  # And here
 
-    # for message in st.session_state.picture_messages:
-    #     if message.role != "system":  # Skip system messages for UI
-    #         with st.chat_message(message.role):  # Use dot notation here
-    #             st.markdown(message.content)  # And here
-
-    if "uploaded_files" not in st.session_state:
-        st.session_state.uploaded_files = []
-
-    # Add system prompt as a UserMessage if it doesn't exist
-    if st.session_state["system_prompt"] and not any(
-        message.role == "system" for message in st.session_state.messages
-    ):
-        st.session_state.messages.insert(
-            0, SystemMessage(content=st.session_state["system_prompt"])
-        )
-
-
 
     if st.session_state.uploaded_files != uploaded_files and uploaded_files:
 
@@ -140,10 +126,6 @@ if st.session_state.page == 'chat':
 
         st.session_state.uploaded_files = uploaded_files
 
-    # Add system message to the conversation log
-    intro_message = AssistantMessage(content="Hi! What did you get up to today?")
-    st.session_state.messages.append(intro_message)
-
     if prompt := st.chat_input("What event would you like me to write a story about?"):
         new_message = UserMessage(role="user", content=prompt)
         st.session_state.messages.append(new_message)
@@ -162,7 +144,7 @@ if st.session_state.page == 'chat':
         if response_generator is not None:
             for response in response_generator:
                 full_response += response.data.choices[0].delta.content or ""
-                message_placeholder.markdown(full_response + "▌")
+                message_placeholder.markdown(full_response + " ")
             message_placeholder.markdown(full_response)
         else:
             # Handle the case where response_generator is None

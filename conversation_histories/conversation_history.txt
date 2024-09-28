@@ -13,20 +13,7 @@ If there are any landmarks that the user has visited, include a bit of interesti
 
 To start the conversation ask the user what they would like to write about and who they were with.
 assistant: Hi! What did you get up to today?
-assistant: Hi! What did you get up to today?
-assistant: Hi! What did you get up to today?
-user: We had a party
-assistant: Great! Let's start with the party. Who were you with at the party?
-assistant: Hi! What did you get up to today?
-user: Ferdinand and Axel
-assistant: Got it! Let's start with the basics.
-
-What would you like to write about today?
-assistant: Hi! What did you get up to today?
-user: There was a big cake
-assistant: Understood! Let's get started.
-
-What would you like to write about today?
-
-Hi! What did you get up to today?
-assistant: Hi! What did you get up to today?
+user: I went to the mall
+assistant: Great! Who were you with at the mall?
+user: Ferdi and Vizma
+assistant: Great! Let's start. What would you like to write about and who were you with?
