@@ -7,8 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-streamlit = "^1.38.0"
 mistralai = "^1.1.0"
+pillow = "^10.4.0"
+streamlit = "^1.38.0"
 
 
 [build-system]
