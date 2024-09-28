@@ -1,8 +1,17 @@
 from mistralai import Mistral, UserMessage, SystemMessage, AssistantMessage
 import streamlit as st
 import os
+from PIL import Image
+
 import prompts
 st.title("Your Personal JournalAIst")
+
+uploaded_files = st.file_uploader("Choose images...", type=["jpg", "png"], accept_multiple_files=True)
+if uploaded_files:
+    cols = st.columns(len(uploaded_files))
+    for col, uploaded_file in zip(cols, uploaded_files):
+        image = Image.open(uploaded_file)
+        col.image(image, use_column_width=True)
 
 
 # Function to reset the state
@@ -34,16 +43,10 @@ client = Mistral(api_key=api_key)
 
 # Initialize the model in session state if it's not already set
 if "mistral_model" not in st.session_state:
-    st.session_state["mistral_model"] = "mistral-tiny"
+    st.session_state["mistral_model"] = "mistral-large-latest"
 
-# Always display the dropdown
-model_options = ("mistral-tiny", "mistral-small", "mistral-medium")
-st.session_state["mistral_model"] = st.selectbox(
-    "Select a model",
-    model_options,
-    index=model_options.index(st.session_state["mistral_model"]),
-    key="model_select",
-)
+if "pixtral_model" not in st.session_state:
+    st.session_state["pixtral_model"] = "pixtral-12b-2409"
 
 # Add system prompt input
 if "system_prompt" not in st.session_state:
@@ -69,7 +72,7 @@ for message in st.session_state.messages:
         with st.chat_message(message.role):  # Use dot notation here
             st.markdown(message.content)  # And here
 
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("What event would you like me to write a story about?"):
     new_message = UserMessage(role="user", content=prompt)
     st.session_state.messages.append(new_message)
 
