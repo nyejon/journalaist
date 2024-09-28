@@ -160,6 +160,9 @@ if st.session_state.page == 'chat':
         st.session_state.page = 'story'
         st.rerun()
 
+    print(st.session_state.messages)
+
+
 elif st.session_state.page == 'story':
     if 'CONFIG' not in st.session_state:
         st.session_state.CONFIG = {
@@ -219,7 +222,6 @@ elif st.session_state.page == 'story':
             # TODO add pictures
             n_pictures=st.session_state.n_pictures)
 
-        print(story_prompt)
         client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
         story_response = client.chat.complete(
             model=st.session_state["mistral_model"],

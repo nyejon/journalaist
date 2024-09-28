@@ -9,6 +9,7 @@ from mistralai import (
     UserMessageContent,
 )
 
+PIXTRAL_TEMPERATURE = 0.3
 
 def encode_image_base64(image_file):
     return base64.b64encode(image_file.getvalue()).decode("utf-8")
@@ -34,6 +35,7 @@ def handle_files(files: list, client: Mistral, model: str):
     picture_messages = UserMessage(content=content)
     chat_response = client.chat.stream(
         model=model,
+        temperature=PIXTRAL_TEMPERATURE,
         messages=[system_messages, picture_messages],
     )
 
