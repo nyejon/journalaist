@@ -44,10 +44,10 @@ client = Mistral(api_key=api_key)
 
 # Initialize the model in session state if it's not already set
 if "mistral_model" not in st.session_state:
-    st.session_state["mistral_model"] = "mistral-tiny"
+    st.session_state["mistral_model"] = "mistral-large-latest"
 
-# Set to large mistral model
-st.session_state["mistral_model"] = "mistral-large-latest"
+if "pixtral_model" not in st.session_state:
+    st.session_state["pixtral_model"] = "pixtral-12b-2409"
 
 # Add system prompt input
 if "system_prompt" not in st.session_state:
@@ -73,7 +73,7 @@ for message in st.session_state.messages:
         with st.chat_message(message.role):  # Use dot notation here
             st.markdown(message.content)  # And here
 
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("What event would you like me to write a story about?"):
     new_message = UserMessage(role="user", content=prompt)
     st.session_state.messages.append(new_message)
 
