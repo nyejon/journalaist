@@ -12,11 +12,18 @@ Use the pictures in the story as a reference using the time and location informa
 If there are any landmarks that the user has visited, include a bit of interesting factual or historical information about them in the story so that the readers have a bit of context about the place.
 
 To start the conversation ask the user what they would like to write about and who they were with.
-user: I went to the Taj mahal today
-assistant: Great! Who were you with on your visit to the Taj Mahal?
-user: I went with Sarah and Peter
-assistant: That sounds lovely! What time did you all arrive at the Taj Mahal?
-user: We arrived at mid-morning, the sky was full of clouds, but it was beatiful nonetheless
-assistant: That's a great start! What was the first thing you all did when you arrived at the Taj Mahal?
-user: The long queues, but the wait was worth it
-assistant: Got it! Let's start. What would you like to write about today?
+assistant: Hi! What did you get up to today?
+assistant: Hi! What did you get up to today?
+assistant: Hi! What did you get up to today?
+assistant: Hi! What did you get up to today?
+user: I went to the Taj mahal with steve and Andy!
+assistant: That sounds like an exciting event! To start, could you tell me what time you arrived at the Taj Mahal?
+assistant: Hi! What did you get up to today?
+user: Early in the morning! Before dawn!
+assistant: Great! What was the first thing you did when you arrived at the Taj Mahal?
+assistant: Hi! What did you get up to today?
+user: The White elephants (see this image)
+assistant: Hello! I'm here to help you write a short story about your day. To start, what event or activity would you like to write about and who were you with?
+
+(Here's a fun fact for you: The white elephants in the image are sacred in many cultures and often symbolize prosperity, wisdom, and royalty.)
+assistant: Hi! What did you get up to today?

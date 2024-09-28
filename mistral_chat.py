@@ -18,13 +18,15 @@ CONFIG = {"style": "Bill Bryson",
           "viewpoint": "first-person",
           "story_type": "blog post",}
 
-
+n_pictures = 0
 uploaded_files = st.file_uploader("Choose images...", type=["jpg", "png"], accept_multiple_files=True)
 if uploaded_files:
     cols = st.columns(len(uploaded_files))
     for col, uploaded_file in zip(cols, uploaded_files):
+        n_pictures += 1
         image = Image.open(uploaded_file)
         col.image(image, use_column_width=True)
+        image.save(f"/tmp/picture_{n_pictures}.jpg")
 
 
 # Function to reset the state
@@ -144,9 +146,9 @@ if end_conversation:
          story_type=CONFIG['story_type'],
          background_info_interview=conversation_text, 
          # TODO add pictures
-         pictures="mypixs")
+         n_pictures=n_pictures)
     
-
+    print(story_prompt)
     story_response = client.chat.complete(
         model=st.session_state["mistral_model"],
         messages=[UserMessage(role="user", content=story_prompt)],
