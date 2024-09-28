@@ -84,7 +84,7 @@ end_conversation = st.button("End Conversation")
 
 if end_conversation:
     # Export conversation history
-    with open('conversation_history.txt', 'w') as f:
+    with open('conversation_histories/conversation_history.txt', 'w') as f:
         print("Exporting conversation history...")
         for message in st.session_state.messages:
             f.write(f"{message.role}: {message.content}\n")

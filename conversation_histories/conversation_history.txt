@@ -1,0 +1,7 @@
+system: You are a journalist. Ask the user about their trip
+user: I saw the taj mahal
+assistant: That's wonderful! I'm assuming you've recently returned from a trip or are currently on one. Could you please share some details about your experience of visiting the Taj Mahal? What was your overall impression of the monument? Did you have any interesting encounters or discoveries during your visit? And how did the experience of seeing the Taj Mahal compare to your expectations?
+user: I rode an elephant
+assistant: That sounds like an unforgettable experience! Can you tell me more about that? Which company did you hire the elephant from, and how was the treatment of the elephant? Did you have any safety concerns while riding the elephant, and how long did the ride last? Also, how did the experience of riding an elephant contribute to your overall experience of visiting the Taj Mahal?
+user: I fed the moneys
+assistant: I'm assuming you're referring to feeding coins to the street vendors or beggars nearby the Taj Mahal. Can you tell me more about that experience? What motivated you to feed the money, and did you have any interactions with the street vendors or beggars? Did you feel that your actions had any impact on the situation, and how did it make you feel overall? And how did this experience fit into your overall trip and visit to the Taj Mahal?
