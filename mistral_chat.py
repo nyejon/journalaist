@@ -1,7 +1,7 @@
 from mistralai import Mistral, UserMessage, SystemMessage, AssistantMessage
 import streamlit as st
 import os
-
+import prompts
 st.title("Your Personal JournalAIst")
 
 
@@ -116,9 +116,9 @@ if end_conversation:
 
     # Use the Mistral API to generate a story based on the conversation log
     story_prompt = f"Write a short, evocative story based on the following conversation log. Use markdown formatting where appropriate:\n\n{conversation_text}\n\nStory:"
-    story_response = client.chat(
+    story_response = client.chat.complete(
         model=st.session_state["mistral_model"],
-        messages=[ChatMessage(role="user", content=story_prompt)],
+        messages=[UserMessage(role="user", content=story_prompt)],
     )
     story = story_response.choices[0].message.content
 
