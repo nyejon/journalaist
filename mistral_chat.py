@@ -65,6 +65,9 @@ if "page" not in st.session_state:
 if "session_id" not in st.session_state:
     st.session_state.session_id = uuid.uuid4()
 
+    if not os.path.exists("./stories/" + str(st.session_state.session_id)):
+        os.makedirs("./stories/" + str(st.session_state.session_id))
+
 client = Mistral(
     api_key=api_key,
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),

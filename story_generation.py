@@ -6,6 +6,7 @@ import streamlit as st
 import os
 
 import prompts
+from markdown_formatter import markdown_insert_images
 import re
 import base64
 from pathlib import Path
@@ -27,14 +28,14 @@ def img_to_bytes(img_path):
     return encoded
 
 
-def img_to_html(img_path, img_alt):
+def img_to_html(img_path, img_alt, session_id):
     img_format = img_path.split(".")[-1]
-    img_html = f'<img src="data:stories/{img_format.lower()};base64,{img_to_bytes(img_path)}" alt="{img_alt}" style="max-width: 100%;">'
+    img_html = f'<img src="data:stories/{session_id}/{img_format.lower()};base64,{img_to_bytes(img_path)}" alt="{img_alt}" style="max-width: 100%;">'
 
     return img_html
 
 
-def markdown_insert_images(markdown):
+def markdown_insert_images(markdown, session_id):
     images = markdown_images(markdown)
 
     for image in images:
@@ -43,7 +44,7 @@ def markdown_insert_images(markdown):
         image_path = image[2]
         if os.path.exists(image_path):
             markdown = markdown.replace(
-                image_markdown, img_to_html(image_path, image_alt)
+                image_markdown, img_to_html(image_path, image_alt, session_id)
             )
     return markdown
 
@@ -90,7 +91,9 @@ def story_generation(client):
 
     if st.button("Start writing!"):
         # Export conversation history
-        with open(f"stories/{st.session_state.session_id}/conversation_history.txt", "w") as f:
+        with open(
+            f"stories/{st.session_state.session_id}/conversation_history.txt", "w"
+        ) as f:
             print("Exporting conversation history...")
             for message in st.session_state.messages:
                 f.write(f"{message.role}: {message.content}\n")
@@ -133,6 +136,6 @@ def story_generation(client):
         with open("stories/story.md", "r") as story_file:
             story = story_file.read()
 
-        story = markdown_insert_images(story)
+        story = markdown_insert_images(story, session_id=st.session_state.session_id)
         with st.container():
             st.markdown(story, unsafe_allow_html=True)
