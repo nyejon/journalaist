@@ -8,7 +8,6 @@ import os
 
 def final_page(client):
 
-
     with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
         story = story_file.read()
 
@@ -17,45 +16,46 @@ def final_page(client):
     with st.container():
         st.markdown(story, unsafe_allow_html=True)
 
-
     if not st.session_state.saved:
 
         story_dir = f"./stories/{st.session_state.session_id}"
         story_path = f"{story_dir}/story"
         story_zip = f"{story_dir}/story.zip"
 
-
         if not os.path.exists(story_zip):
-            #os.makedirs(story_dir)
+            # os.makedirs(story_dir)
             shutil.make_archive(story_path, "zip", story_dir)
         st.session_state.saved = True
-
 
     with open(story_zip, "rb") as fp:
         download_button = st.download_button(
             label="Download story", data=fp, file_name=story_zip, mime="application/zip"
         )
 
-        
     with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
         story = story_file.read()
 
+    generate_video = st.button(label="Generate video")
 
+    if generate_video:
 
-    story_response = client.chat.complete(
-        model=st.session_state["mistral_model"],
-        messages=[
-            UserMessage(
-                role="user",
-                content="Create a prompt to generate a 5 second video of this story. It should be less than 50 words"
-                + story,
-            ),
-        ],
-    )
-    video_response = story_response.choices[0].message.content
+        story_response = client.chat.complete(
+            model=st.session_state["mistral_model"],
+            messages=[
+                UserMessage(
+                    role="user",
+                    content="Create a prompt to generate a 5 second video of this story. It should be less than 50 words"
+                    + story,
+                ),
+            ],
+        )
+        video_response = story_response.choices[0].message.content
 
-    video_path = luma_generate.generate_video(
-        st.session_state.session_id, prompt=video_response
-    )
+        video_path = luma_generate.generate_video(
+            st.session_state.session_id, prompt=video_response
+        )
 
-    st.video(video_path)
+        st.session_state.video_generated = True
+
+    if "video_generated" in st.session_state:
+        st.video(video_path)
