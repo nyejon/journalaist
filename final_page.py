@@ -9,7 +9,7 @@ def final_page(client):
 
     with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
         story = story_file.read()
-    story = markdown_insert_images(story, session_id=st.session_state.session_id)
+
     with st.container():
         st.markdown(story, unsafe_allow_html=True)
 

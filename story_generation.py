@@ -9,6 +9,7 @@ import prompts
 
 import shutil
 from pathlib import Path
+from markdown_formatter import markdown_insert_images
 
 
 
@@ -111,6 +112,8 @@ def story_generation(client):
             messages=[UserMessage(role="user", content=story_prompt)],
         )
         story = story_response.choices[0].message.content
+
+        story = markdown_insert_images(story, session_id=st.session_state.session_id)
 
         # Save the story to a markdown file
         with open(f"stories/{st.session_state.session_id}/story.md", "w") as f:
