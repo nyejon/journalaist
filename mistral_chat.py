@@ -1,14 +1,16 @@
-
-from mistralai import Mistral, UserMessage, SystemMessage, AssistantMessage
+from mistralai import Mistral
+from mistralai.utils import BackoffStrategy, RetryConfig
 import streamlit as st
 import os
 
 import interview, story_generation
 import prompts
 
+
 def reset_state():
     for key in st.session_state:
         del st.session_state[key]
+
 
 # Get the API key from the environment variables or the user
 api_key = os.getenv("MISTRAL_API_KEY")
@@ -49,19 +51,22 @@ if "uploaded_files" not in st.session_state:
 if "photo_upload" not in st.session_state:
     st.session_state.photo_upload = None
 
-if 'CONFIG' not in st.session_state:
-        st.session_state.CONFIG = {
-            "style": "Bill Bryson",
-            "viewpoint": "first-person",
-            "story_type": "blog post",
-        }
+if "CONFIG" not in st.session_state:
+    st.session_state.CONFIG = {
+        "style": "Bill Bryson",
+        "viewpoint": "first-person",
+        "story_type": "blog post",
+    }
 
-if 'page' not in st.session_state:
-    st.session_state.page = 'chat'
+if "page" not in st.session_state:
+    st.session_state.page = "chat"
 
-client = Mistral(api_key=api_key)
+client = Mistral(
+    api_key=api_key,
+    retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
+)
 
-if st.session_state.page == 'chat':
+if st.session_state.page == "chat":
     interview.interview(client)
-elif st.session_state.page == 'story':
+elif st.session_state.page == "story":
     story_generation.story_generation(client)

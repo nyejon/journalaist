@@ -21,6 +21,7 @@ def interview(client: Mistral):
     if st.session_state.photo_upload is None:
         # Add end conversation button outside of the chat input condition
         st.write("Would you like to upload photos?")
+        st.session_state.n_pictures = 0
 
         col1, col2 = st.columns(2)
         with col1:
@@ -33,9 +34,9 @@ def interview(client: Mistral):
         elif upload_photos_no is True:
             st.session_state.photo_upload = False
 
-    st.session_state.n_pictures = 0
+
     if st.session_state.photo_upload:
-        
+
         uploaded_files = st.file_uploader(
             "Choose images...", type=["jpg", "png"], accept_multiple_files=True
         )
