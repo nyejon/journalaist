@@ -33,12 +33,14 @@ def final_page(client):
             label="Download story", data=fp, file_name=story_zip, mime="application/zip"
         )
 
-    with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
-        story = story_file.read()
+
 
     generate_video = st.button(label="Generate video")
 
     if generate_video:
+
+        with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
+            story = story_file.read()
 
         story_response = client.chat.complete(
             model=st.session_state["mistral_model"],
@@ -50,10 +52,12 @@ def final_page(client):
                 ),
             ],
         )
-        video_response = story_response.choices[0].message.content
+        video_prompt = story_response.choices[0].message.content
+
+        print(video_prompt)
 
         video_path = luma_generate.generate_video(
-            st.session_state.session_id, prompt=video_response
+            st.session_state.session_id, prompt=video_prompt
         )
 
         st.session_state.video_generated = True

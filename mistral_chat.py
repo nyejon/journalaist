@@ -47,6 +47,9 @@ if "messages" not in st.session_state:
 if "picture_messages" not in st.session_state:
     st.session_state.picture_messages = []
 
+if "picture_information" not in st.session_state:
+    st.session_state.picture_information = ""
+
 if "uploaded_files" not in st.session_state:
     st.session_state.uploaded_files = []
 

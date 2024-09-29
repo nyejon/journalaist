@@ -19,7 +19,7 @@ def interview(client: Mistral):
     st.subheader("Generate a personal story by uploading pictures and answering a few questions.")
     st.write("""
             Hi! What did you get up to today?
-            Upload some pictures if you wish, and give me a short description of your day.
+            Upload some pictures and give me a short description of your day.
     """)
 
     if st.session_state.photo_upload is None:
@@ -77,8 +77,8 @@ def interview(client: Mistral):
 
                 print(res)
                 """
-                
-                
+
+
             file_info = mistral_files.handle_files(
                 st.session_state.uploaded_files,
                 client,
@@ -89,6 +89,7 @@ def interview(client: Mistral):
             #message_placeholder = st.empty()
             if file_info:
                 picture_response += file_info.choices[0].message.content
+                st.session_state.picture_information = picture_response
                 #message_placeholder.markdown(picture_response + "▌")
                 #message_placeholder.markdown(picture_response)
             else:

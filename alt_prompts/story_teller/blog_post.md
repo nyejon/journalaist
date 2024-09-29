@@ -1,10 +1,12 @@
-Write a blog post about the event described in the interview below. Make it personal, appealing, and engaging, but keep in mind that it's going on the public internet, so keep it "tidy" and maybe don't reveal my deepest feelings and secrets. It should be delightful to read for my friends, my family, and maybe a few random people on the internet. 
+Write a blog post about the event described in the interview below. Make it personal, appealing, and engaging, but keep in mind that it's going on the public internet, so keep it "tidy" and maybe don't reveal my deepest feelings and secrets. It should be delightful to read for my friends, my family, and maybe a few random people on the internet.
 
 Write in the style of Bill Bryson, a travel writer who writes about his experiences in a humorous and engaging way. Do not mention Bill Bryson in the article.
 
 Here's the interview:
 {background_info_interview}
 
+The information about the pictures:
+{picture_information}
 
 The user uploaded {n_pictures} pictures.
 When referring to the pictures in your output, refer to them as

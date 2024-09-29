@@ -94,7 +94,7 @@ def story_generation(client):
             "blog post": "alt_prompts/story_teller/blog_post.md",
             "short story": "alt_prompts/story_teller/short_story.md"
         }
-        
+
         story_prompt = prompts.render_template_from_file(
             story_prompt_paths[st.session_state.CONFIG['story_type']],
             #style=st.session_state.CONFIG['style'],
@@ -102,6 +102,7 @@ def story_generation(client):
             #story_type=st.session_state.CONFIG['story_type'],
             background_info_interview=conversation_text,
             # TODO add pictures
+            picture_information=st.session_state.picture_information,
             n_pictures=st.session_state.n_pictures,
         )
 

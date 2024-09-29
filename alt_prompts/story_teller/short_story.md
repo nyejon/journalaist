@@ -1,11 +1,12 @@
-Write a short story summarising the event described in the interview below. Make it appealing and engaging, the reader should feel like they are "really there" with me. But also don't over-dramatize, stay rooted in the facts you learned. 
+Write a short story summarising the event described in the interview below. Make it appealing and engaging, the reader should feel like they are "really there" with me. But also don't over-dramatize, stay rooted in the facts you learned.
 
 Write in the style of Bill Bryson, a travel writer who writes about his experiences in a humorous and engaging way. Do not mention Bill Bryson in the article.
 
 Here's the interview:
 {background_info_interview}
 
-
+The information about the pictures:
+{picture_information}
 
 The user uploaded {n_pictures} pictures.
 When referring to the pictures in your output, refer to them as
