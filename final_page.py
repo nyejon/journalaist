@@ -32,7 +32,7 @@ def final_page(client):
         messages=[
             UserMessage(
                 role="user",
-                content="Create a prompt to generate a video of this story. It should be less than 300 characters"
+                content="Create a prompt to generate a 5 second video of this story. It should be less than 50 words"
                 + story,
             ),
         ],

@@ -16,14 +16,18 @@ def generate_video(session_id, prompt):
     )
 
     completed = False
-    while not completed:
-        generation = client.generations.get(id=generation.id)  # type: ignore
-        if generation.state == "completed":
-            completed = True
-        elif generation.state == "failed":
-            raise RuntimeError(f"Generation failed: {generation.failure_reason}")
-        st.write(f"Status: {generation.state}")
-        time.sleep(3)
+
+    with st.spinner(text=f"Status: {generation.state}"):
+        while not completed:
+            generation = client.generations.get(id=generation.id)  # type: ignore
+            if generation.state == "completed":
+                completed = True
+            elif generation.state == "failed":
+                raise RuntimeError(f"Generation failed: {generation.failure_reason}")
+            # st.info(f"Status: {generation.state}")
+            print(f"Status: {generation.state}")
+
+            time.sleep(3)
 
     video_url = generation.assets.video  # type: ignore
 
