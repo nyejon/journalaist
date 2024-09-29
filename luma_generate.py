@@ -17,7 +17,7 @@ def generate_video(session_id, prompt):
 
     completed = False
 
-    with st.spinner(text=f"Status: {generation.state}"):
+    with st.spinner(text=f"Status: Dreaming..."):
         while not completed:
             generation = client.generations.get(id=generation.id)  # type: ignore
             if generation.state == "completed":
@@ -28,6 +28,7 @@ def generate_video(session_id, prompt):
             print(f"Status: {generation.state}")
 
             time.sleep(3)
+    st.success(f"Status: {generation.state}")
 
     video_url = generation.assets.video  # type: ignore
 

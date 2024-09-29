@@ -11,7 +11,7 @@ from mistralai import (
 PIXTRAL_TEMPERATURE = 0.3
 
 def encode_image_base64(image_file):
-    img = Image.open(image_file)
+    img = Image.open(image_file).convert("RGB")
     img = img.resize((512, int(512 * img.height / img.width)))
     img_bytes = BytesIO()
     img.save(img_bytes, format="JPEG")
