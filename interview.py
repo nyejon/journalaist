@@ -15,12 +15,12 @@ import requests
 def interview(client: Mistral):
 
 
-    image = Image.open("journalaist_logo.webp")
-    col1, col2 = st.columns([4, 1])
-    with col1:
-        st.title("Your Personal JournalAIst")
-    with col2:
-        st.image(image, width=100)
+    # image = Image.open("journalaist_logo.webp")
+    # col1, col2 = st.columns([4, 1])
+    # with col1:
+    st.title("Your Personal JournalAIst")
+    # with col2:
+    #     st.image(image, width=100)
     st.subheader("Generate a personal story by uploading pictures and answering a few questions.")
     st.write("""
             Hi! What did you get up to today?
