@@ -98,7 +98,7 @@ def interview(client: Mistral):
             print(picture_info)
             # Load prompt from file
             st.session_state["system_prompt"] = prompts.render_template_from_file(
-                "prompts/interview.md", picture_info=picture_info
+                "alt_prompts/interview.md", picture_info=picture_info
             )
 
             # print(st.session_state["system_prompt"])
@@ -120,8 +120,7 @@ def interview(client: Mistral):
             else:
             # Add system message to the conversation log
                 intro_message = AssistantMessage(
-                    content="Hi! Please give me a short summary of what you did today? \
-                            Just give me the bullet points, at least five if you can."
+                    content="Hi! Tell me about a meaningful event from in your life!"
                 )
             st.session_state.messages.append(intro_message)
 
