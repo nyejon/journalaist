@@ -23,8 +23,7 @@ def story_generation(client):
     st.title("Your Personal JournalAIst")
     st.write(
     """
-        ### I will now generate a story for you.
-        ### Please select the writing style, viewpoint, and story type you would like me to use.
+        ### Please select the story type you would like me to write for you.
     """
     )
     """"
@@ -113,9 +112,8 @@ def story_generation(client):
         )
         story = story_response.choices[0].message.content
 
-        story = markdown_insert_images(story, session_id=st.session_state.session_id)
-
         # Save the story to a markdown file
+        print(f"Saving story to stories/{st.session_state.session_id}/story.md")
         with open(f"stories/{st.session_state.session_id}/story.md", "w") as f:
             f.write(story)
 

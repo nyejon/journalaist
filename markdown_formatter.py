@@ -22,7 +22,8 @@ def img_to_bytes(img_path):
 
 def img_to_html(img_path, img_alt, session_id):
     img_format = img_path.split(".")[-1]
-    img_html = f'<img src="data:stories/{session_id}/{img_format.lower()};base64,{img_to_bytes(img_path)}" alt="{img_alt}" style="max-width: 100%;">'
+    #img_html = f'<img src="data:stories/{session_id}/{img_format.lower()};base64,{img_to_bytes(img_path)}" alt="{img_alt}" style="max-width: 100%;">'
+    img_html = f'<img src="data:stories/{session_id}{img_format.lower()};base64,{img_to_bytes(img_path)}" alt="{img_alt}" style="max-width: 100%;">'
 
     return img_html
 
@@ -34,6 +35,8 @@ def markdown_insert_images(markdown, session_id):
         image_markdown = image[0]
         image_alt = image[1]
         image_path = image[2]
+
+        image_path = f"stories/{session_id}/{image_path}"
         if os.path.exists(image_path):
             markdown = markdown.replace(
                 image_markdown, img_to_html(image_path, image_alt, session_id)
