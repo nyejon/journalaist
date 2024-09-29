@@ -3,9 +3,11 @@ import streamlit as st
 from markdown_formatter import markdown_insert_images
 import luma_generate
 import shutil
+import os
 
 
 def final_page(client):
+
 
     with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
         story = story_file.read()
@@ -15,19 +17,30 @@ def final_page(client):
     with st.container():
         st.markdown(story, unsafe_allow_html=True)
 
-    story_dir = f"./stories/{st.session_state.session_id}"
-    story_path = f"{story_dir}/story"
-    story_zip = f"{story_dir}/story.zip"
 
-    shutil.make_archive(story_path, "zip", story_dir)
+    if not st.session_state.saved:
+
+        story_dir = f"./stories/{st.session_state.session_id}"
+        story_path = f"{story_dir}/story"
+        story_zip = f"{story_dir}/story.zip"
+
+
+        if not os.path.exists(story_zip):
+            #os.makedirs(story_dir)
+            shutil.make_archive(story_path, "zip", story_dir)
+        st.session_state.saved = True
+
 
     with open(story_zip, "rb") as fp:
         download_button = st.download_button(
             label="Download story", data=fp, file_name=story_zip, mime="application/zip"
         )
 
+        
     with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
         story = story_file.read()
+
+
 
     story_response = client.chat.complete(
         model=st.session_state["mistral_model"],
@@ -40,7 +53,6 @@ def final_page(client):
         ],
     )
     video_response = story_response.choices[0].message.content
-    print(video_response)
 
     video_path = luma_generate.generate_video(
         st.session_state.session_id, prompt=video_response

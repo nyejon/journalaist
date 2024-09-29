@@ -75,6 +75,11 @@ client = Mistral(
     # retry_config=RetryConfig("backoff", BackoffStrategy(5000, 60000, 1.5, 300000), True),
 )
 
+# Keep track of wether the story ahs already been written.
+if "saved" not in st.session_state:
+    st.session_state.saved = False
+
+
 if st.session_state.page == "chat":
     interview.interview(client)
 elif st.session_state.page == "story":
