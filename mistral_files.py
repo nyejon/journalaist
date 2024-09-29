@@ -6,8 +6,6 @@ from mistralai import (
     Mistral,
     UserMessage,
     SystemMessage,
-    AssistantMessage,
-    UserMessageContent,
 )
 
 PIXTRAL_TEMPERATURE = 0.3
@@ -44,7 +42,7 @@ def handle_files(files: list, client: Mistral, model: str):
         model=model,
         temperature=PIXTRAL_TEMPERATURE,
         messages=[system_messages, picture_messages],
-        timeout_ms=60000,
+        # timeout_ms=60000,
     )
 
     return chat_response

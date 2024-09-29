@@ -231,6 +231,17 @@ files = [
 ]
 
 [[package]]
+name = "distro"
+version = "1.9.0"
+description = "Distro - an OS platform information API"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "distro-1.9.0-py3-none-any.whl", hash = "sha256:7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2"},
+    {file = "distro-1.9.0.tar.gz", hash = "sha256:2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed"},
+]
+
+[[package]]
 name = "eval-type-backport"
 version = "0.2.0"
 description = "Like `typing._eval_type`, but lets older Python versions use newer typing features."
@@ -409,6 +420,25 @@ files = [
 
 [package.dependencies]
 referencing = ">=0.31.0"
+
+[[package]]
+name = "lumaai"
+version = "1.0.2"
+description = "The official Python library for the lumaai API"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "lumaai-1.0.2-py3-none-any.whl", hash = "sha256:f4ad8d21e41ac74f71b01bd48b0b45121f5cb1f38fe6bda1bb4ad6f5bd4cc57e"},
+    {file = "lumaai-1.0.2.tar.gz", hash = "sha256:ed33b5f18fce989b73b1681723695c330a44d583c0dd0a46f419c4958925077d"},
+]
+
+[package.dependencies]
+anyio = ">=3.5.0,<5"
+distro = ">=1.7.0,<2"
+httpx = ">=0.23.0,<1"
+pydantic = ">=1.9.0,<3"
+sniffio = "*"
+typing-extensions = ">=4.7,<5"
 
 [[package]]
 name = "markdown-it-py"
@@ -1458,4 +1488,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a1b56c2bbe4ef98eebc82cea151fcd092462d05216527159dcd15a62767734d0"
+content-hash = "10d8529869e71b4d1ce0e6f2700ff8f36f1ab3fe0cbb1df25a42f3bd416d8d7c"

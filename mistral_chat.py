@@ -79,4 +79,4 @@ if st.session_state.page == "chat":
 elif st.session_state.page == "story":
     story_generation.story_generation(client)
 elif st.session_state.page == "final":
-    final_page.final_page()
+    final_page.final_page(client)
