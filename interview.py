@@ -7,11 +7,14 @@ import os
 from PIL import Image
 
 import mistral_files
-import httpx
 import prompts
 
+import base64
+import requests
 
 def interview(client: Mistral):
+
+
     st.title("Your Personal JournalAIst")
     st.subheader("Generate a personal story by uploading pictures and answering a few questions.")
     st.write("""
@@ -59,9 +62,22 @@ def interview(client: Mistral):
             for uploaded_file in st.session_state.uploaded_files:
                 st.session_state.n_pictures += 1
                 image = Image.open(uploaded_file)
-                image.convert("RGB").save(
-                    f"./stories/{st.session_state.session_id}/picture_{st.session_state.n_pictures}.jpg"
-                )
+                image_location = f"./stories/{st.session_state.session_id}/picture_{st.session_state.n_pictures}.jpg"
+                image.convert("RGB").save(image_location)
+
+                ## uncomment to try upload to API
+                """
+                with open(image_location, "rb") as file:
+                    url = "https://api.imgbb.com/1/upload"
+                    payload = {
+                        "key": os.getenv("IMGBB_API_KEY"),
+                        "image": base64.b64encode(file.read()),
+                    }
+                    res = requests.post(url, payload)
+
+                print(res)
+                """
+                
             file_info = mistral_files.handle_files(
                 st.session_state.uploaded_files,
                 client,
