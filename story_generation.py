@@ -8,6 +8,10 @@ import os
 import prompts
 from markdown_formatter import markdown_insert_images
 
+import shutil
+from pathlib import Path
+
+# Keep track of wether the story ahs already been written. 
 if "written" not in st.session_state:
     st.session_state.written = False
 
@@ -111,12 +115,16 @@ def story_generation(client):
 
     if st.session_state.written:
 
-        shutil.make_archive("story", 'zip', "stories/")
+        story_dir = f"./stories/{st.session_state.session_id}"
+        story_path = f"{story_dir}/story"
+        story_zip = f"{story_dir}/story.zip"
+        
+        shutil.make_archive(story_path, 'zip', story_dir)
 
-        with open("story.zip", "rb") as fp:
+        with open(story_zip, "rb") as fp:
             download_button = st.download_button(
                 label="Download story",
                 data=fp,
-                file_name="story.zip",
+                file_name=story_zip,
                 mime="application/zip"
             )
