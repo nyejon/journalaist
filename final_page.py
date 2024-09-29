@@ -24,6 +24,9 @@ def final_page(client):
             label="Download story", data=fp, file_name=story_zip, mime="application/zip"
         )
 
+    with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
+        story = story_file.read()
+
     story_response = client.chat.complete(
         model=st.session_state["mistral_model"],
         messages=[

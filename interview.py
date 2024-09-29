@@ -71,10 +71,9 @@ def interview(client: Mistral):
             picture_response = ""
             #message_placeholder = st.empty()
             if file_info:
-                for response in file_info:
-                    picture_response += response.data.choices[0].delta.content or ""
-                    #message_placeholder.markdown(picture_response + "▌")
-                    #message_placeholder.markdown(picture_response)
+                picture_response += file_info.choices[0].message.content
+                #message_placeholder.markdown(picture_response + "▌")
+                #message_placeholder.markdown(picture_response)
             else:
                 # Handle the case where response_generator is None
                 st.error("Failed to generate response")

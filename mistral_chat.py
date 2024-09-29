@@ -70,7 +70,7 @@ if "session_id" not in st.session_state:
 
 client = Mistral(
     api_key=api_key,
-    retry_config=RetryConfig("backoff", BackoffStrategy(500, 60000, 1.5, 300000), False),
+    retry_config=RetryConfig("backoff", BackoffStrategy(500, 60000, 1.5, 300000), True),
 )
 
 if st.session_state.page == "chat":
