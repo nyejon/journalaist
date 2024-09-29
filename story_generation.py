@@ -10,7 +10,10 @@ from markdown_formatter import markdown_insert_images
 import re
 import base64
 from pathlib import Path
+import shutil
 
+if "written" not in st.session_state:
+    st.session_state.written = False
 
 def story_generation(client):
     st.title("Your Personal JournalAIst")
@@ -44,12 +47,19 @@ def story_generation(client):
             index=["blog post", "short story", "article"].index(st.session_state.CONFIG["story_type"]),
         )
 
-    if st.button("Start writing!"):
+    start_writing_button = st.empty()
+    start_writing = start_writing_button.button("Start writing!")
+
+
+    if start_writing:
+        start_writing_button.empty()
         # Export conversation history
         with open("conversation_histories/conversation_history.txt", "w") as f:
             print("Exporting conversation history...")
             for message in st.session_state.messages:
                 f.write(f"{message.role}: {message.content}\n")
+
+        st.session_state.written = True
 
         # Clear conversation history
         conversation_log = st.session_state.messages
@@ -88,3 +98,16 @@ def story_generation(client):
         story = markdown_insert_images(story)
         with st.container():
             st.markdown(story, unsafe_allow_html=True)
+
+
+    if st.session_state.written:
+
+        shutil.make_archive("story", 'zip', "stories/")
+
+        with open("story.zip", "rb") as fp:
+            download_button = st.download_button(
+                label="Download story",
+                data=fp,
+                file_name="story.zip",
+                mime="application/zip"
+            )
