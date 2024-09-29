@@ -7,6 +7,7 @@ import os
 from PIL import Image
 
 import mistral_files
+import httpx
 import prompts
 
 
@@ -21,6 +22,7 @@ def interview(client: Mistral):
     if st.session_state.photo_upload is None:
         # Add end conversation button outside of the chat input condition
         st.write("Would you like to upload photos?")
+        st.session_state.n_pictures = 0
 
         col1, col2 = st.columns(2)
         with col1:
@@ -33,9 +35,9 @@ def interview(client: Mistral):
         elif upload_photos_no is True:
             st.session_state.photo_upload = False
 
-    st.session_state.n_pictures = 0
+
     if st.session_state.photo_upload:
-        
+
         uploaded_files = st.file_uploader(
             "Choose images...", type=["jpg", "png"], accept_multiple_files=True
         )
@@ -48,14 +50,18 @@ def interview(client: Mistral):
     if len(st.session_state.uploaded_files) > 0:
         cols = st.columns(len(st.session_state.uploaded_files))
         for col, uploaded_file in zip(cols, st.session_state.uploaded_files):
-            st.session_state.n_pictures += 1
             image = Image.open(uploaded_file)
             col.image(image, use_column_width=True)
-            image.convert("RGB").save(
-                f"./stories/picture_{st.session_state.n_pictures}.jpg"
-            )
+
 
         if "processed_uploaded_files" not in st.session_state:
+            # Save uploaded files
+            for uploaded_file in st.session_state.uploaded_files:
+                st.session_state.n_pictures += 1
+                image = Image.open(uploaded_file)
+                image.convert("RGB").save(
+                    f"./stories/{st.session_state.session_id}/picture_{st.session_state.n_pictures}.jpg"
+                )
             file_info = mistral_files.handle_files(
                 st.session_state.uploaded_files,
                 client,
@@ -68,7 +74,7 @@ def interview(client: Mistral):
                 for response in file_info:
                     picture_response += response.data.choices[0].delta.content or ""
                     #message_placeholder.markdown(picture_response + "▌")
-                #message_placeholder.markdown(picture_response)
+                    #message_placeholder.markdown(picture_response)
             else:
                 # Handle the case where response_generator is None
                 st.error("Failed to generate response")
