@@ -66,7 +66,7 @@ def interview(client: Mistral):
                 image.convert("RGB").save(image_location)
 
                 ## uncomment to try upload to API
-                """
+                
                 with open(image_location, "rb") as file:
                     url = "https://api.imgbb.com/1/upload"
                     payload = {
@@ -76,7 +76,7 @@ def interview(client: Mistral):
                     res = requests.post(url, payload)
 
                 print(res)
-                """
+                
                 
             file_info = mistral_files.handle_files(
                 st.session_state.uploaded_files,
