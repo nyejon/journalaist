@@ -60,7 +60,9 @@ def final_page(client):
             st.session_state.session_id, prompt=video_prompt
         )
 
+        st.session_state.video_path = video_path
+
         st.session_state.video_generated = True
 
     if "video_generated" in st.session_state:
-        st.video(video_path)
+        st.video(st.session_state.video_path)
