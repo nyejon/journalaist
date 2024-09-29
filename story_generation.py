@@ -6,21 +6,24 @@ import streamlit as st
 import os
 
 import prompts
-from markdown_formatter import markdown_insert_images
 
 import shutil
 from pathlib import Path
 
-# Keep track of wether the story ahs already been written. 
-if "written" not in st.session_state:
-    st.session_state.written = False
+
 
 def story_generation(client):
+
+    # Keep track of wether the story ahs already been written. 
+    if "written" not in st.session_state:
+        st.session_state.written = False
+
+    # Add header container
     st.title("Your Personal JournalAIst")
     st.write(
-        """
-            ### I will now generate a story for you.
-            ### Please select the writing style, viewpoint, and story type you would like me to use.
+    """
+        ### I will now generate a story for you.
+        ### Please select the writing style, viewpoint, and story type you would like me to use.
     """
     )
 
@@ -59,6 +62,7 @@ def story_generation(client):
     start_writing = start_writing_button.button("Start writing!")
 
     if start_writing:
+        st.session_state.written = True
         start_writing_button.empty()
         # Export conversation history
         with open(
@@ -68,7 +72,7 @@ def story_generation(client):
             for message in st.session_state.messages:
                 f.write(f"{message.role}: {message.content}\n")
 
-        st.session_state.written = True
+        
 
         # Clear conversation history
         conversation_log = st.session_state.messages
@@ -105,26 +109,8 @@ def story_generation(client):
         with open(f"stories/{st.session_state.session_id}/story.md", "w") as f:
             f.write(story)
 
-        with open(f"stories/{st.session_state.session_id}/story.md", "r") as story_file:
-            story = story_file.read()
-
-        story = markdown_insert_images(story, session_id=st.session_state.session_id)
-        with st.container():
-            st.markdown(story, unsafe_allow_html=True)
 
 
-    if st.session_state.written:
+        st.session_state.page = "final"
+        st.rerun()
 
-        story_dir = f"./stories/{st.session_state.session_id}"
-        story_path = f"{story_dir}/story"
-        story_zip = f"{story_dir}/story.zip"
-        
-        shutil.make_archive(story_path, 'zip', story_dir)
-
-        with open(story_zip, "rb") as fp:
-            download_button = st.download_button(
-                label="Download story",
-                data=fp,
-                file_name=story_zip,
-                mime="application/zip"
-            )

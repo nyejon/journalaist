@@ -5,7 +5,7 @@ import os
 import uuid
 
 
-import interview, story_generation
+import interview, story_generation, final_page
 
 
 def reset_state():
@@ -77,3 +77,5 @@ if st.session_state.page == "chat":
     interview.interview(client)
 elif st.session_state.page == "story":
     story_generation.story_generation(client)
+elif st.session_state.page == "final":
+    final_page.final_page()
