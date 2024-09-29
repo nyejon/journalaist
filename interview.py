@@ -15,7 +15,7 @@ import requests
 def interview(client: Mistral):
 
 
-    image = Image.open("journalaist logo.webp")
+    image = Image.open("journalaist_logo.webp")
     col1, col2 = st.columns([4, 1])
     with col1:
         st.title("Your Personal JournalAIst")
