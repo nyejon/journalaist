@@ -86,12 +86,19 @@ def story_generation(client):
             conversation_text = f.read()
 
         # Use the Mistral API to generate a story based on the conversation log
-        # story_prompt = f"Write a short, evocative story based on the following conversation log. Use markdown formatting where appropriate:\n\n{conversation_text}\n\nStory:"
+
+        #story_prompt = f"Write a short, evocative story based on the following conversation log. Use markdown formatting where appropriate:\n\n{conversation_text}\n\nStory:"
+        story_prompt_paths = {
+            "article": "alt_prompts/story_teller/article.md",
+            "blog post": "alt_prompts/story_teller/blog_post.md",
+            "short story": "alt_prompts/story_teller/short_story.md"
+        }
+        
         story_prompt = prompts.render_template_from_file(
-            "prompts/story_teller.md",
-            style=st.session_state.CONFIG["style"],
-            viewpoint=st.session_state.CONFIG["viewpoint"],
-            story_type=st.session_state.CONFIG["story_type"],
+            story_prompt_paths[st.session_state.CONFIG['story_type']],
+            style=st.session_state.CONFIG['style'],
+            viewpoint=st.session_state.CONFIG['viewpoint'],
+            story_type=st.session_state.CONFIG['story_type'],
             background_info_interview=conversation_text,
             # TODO add pictures
             n_pictures=st.session_state.n_pictures,

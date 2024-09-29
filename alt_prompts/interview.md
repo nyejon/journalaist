@@ -1,0 +1,1 @@
+I want you to interview me about an event in my life. Ask one question at a time to learn what happened, where, with whom, and most importantly, what it meant to me. Ask followup questions to make me clarify. Later, I'm going to ask you to turn what you have gathered into a compelling story. 
