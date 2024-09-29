@@ -18,12 +18,11 @@ def final_page(client):
         st.markdown(story, unsafe_allow_html=True)
 
 
+    story_dir = f"./stories/{st.session_state.session_id}"
+    story_path = f"{story_dir}_story"
+    story_zip = f"{story_dir}_story.zip"
+
     if not st.session_state.saved:
-
-        story_dir = f"./stories/{st.session_state.session_id}"
-        story_path = f"{story_dir}/story"
-        story_zip = f"{story_dir}/story.zip"
-
 
         if not os.path.exists(story_zip):
             #os.makedirs(story_dir)
