@@ -53,7 +53,7 @@ def interview(client: Mistral):
             image = Image.open(uploaded_file)
             col.image(image, use_column_width=True)
             image.convert("RGB").save(
-                f"./stories/picture_{st.session_state.n_pictures}.jpg"
+                f"./stories/{st.session_state.session_id}/picture_{st.session_state.n_pictures}.jpg"
             )
 
         if "processed_uploaded_files" not in st.session_state:

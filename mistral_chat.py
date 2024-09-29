@@ -2,9 +2,10 @@ from mistralai import Mistral
 from mistralai.utils import BackoffStrategy, RetryConfig
 import streamlit as st
 import os
+import uuid
+
 
 import interview, story_generation
-import prompts
 
 
 def reset_state():
@@ -60,6 +61,9 @@ if "CONFIG" not in st.session_state:
 
 if "page" not in st.session_state:
     st.session_state.page = "chat"
+
+if "session_id" not in st.session_state:
+    st.session_state.session_id = uuid.uuid4()
 
 client = Mistral(
     api_key=api_key,
