@@ -14,7 +14,7 @@ from pathlib import Path
 
 def story_generation(client):
 
-    # Keep track of wether the story ahs already been written. 
+    # Keep track of wether the story ahs already been written.
     if "written" not in st.session_state:
         st.session_state.written = False
 
@@ -72,7 +72,7 @@ def story_generation(client):
             for message in st.session_state.messages:
                 f.write(f"{message.role}: {message.content}\n")
 
-        
+
 
         # Clear conversation history
         conversation_log = st.session_state.messages
@@ -98,7 +98,6 @@ def story_generation(client):
         )
 
         # print(story_prompt)
-        client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
         story_response = client.chat.complete(
             model=st.session_state["mistral_model"],
             messages=[UserMessage(role="user", content=story_prompt)],
@@ -113,4 +112,3 @@ def story_generation(client):
 
         st.session_state.page = "final"
         st.rerun()
-
