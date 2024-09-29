@@ -26,7 +26,7 @@ def story_generation(client):
         ### Please select the writing style, viewpoint, and story type you would like me to use.
     """
     )
-
+    """"
     # Create columns for horizontal layout
     col1, col2, col3 = st.columns(3)
 
@@ -49,14 +49,15 @@ def story_generation(client):
             ),
         )
 
-    with col3:
-        st.session_state.CONFIG["story_type"] = st.radio(
-            "Select the story type:",
-            ["blog post", "short story", "article"],
-            index=["blog post", "short story", "article"].index(
-                st.session_state.CONFIG["story_type"]
-            ),
-        )
+    #with col3:
+    """
+    st.session_state.CONFIG["story_type"] = st.radio(
+        "Select the story type:",
+        ["blog post", "short story", "article"],
+        index=["blog post", "short story", "article"].index(
+            st.session_state.CONFIG["story_type"]
+        ),
+    )
 
     start_writing_button = st.empty()
     start_writing = start_writing_button.button("Start writing!")
@@ -96,9 +97,9 @@ def story_generation(client):
         
         story_prompt = prompts.render_template_from_file(
             story_prompt_paths[st.session_state.CONFIG['story_type']],
-            style=st.session_state.CONFIG['style'],
-            viewpoint=st.session_state.CONFIG['viewpoint'],
-            story_type=st.session_state.CONFIG['story_type'],
+            #style=st.session_state.CONFIG['style'],
+            #viewpoint=st.session_state.CONFIG['viewpoint'],
+            #story_type=st.session_state.CONFIG['story_type'],
             background_info_interview=conversation_text,
             # TODO add pictures
             n_pictures=st.session_state.n_pictures,
