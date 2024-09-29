@@ -126,7 +126,7 @@ def interview(client: Mistral):
             print(picture_info)
             # Load prompt from file
             st.session_state["system_prompt"] = prompts.render_template_from_file(
-                "alt_prompts/interview.md", picture_info=picture_info
+                "prompts/interview.md", picture_info=picture_info
             )
 
             # print(st.session_state["system_prompt"])
