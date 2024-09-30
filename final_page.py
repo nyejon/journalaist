@@ -16,7 +16,6 @@ def final_page(client):
     with st.container():
         st.markdown(story, unsafe_allow_html=True)
 
-
     story_dir = f"./stories/{st.session_state.session_id}"
     story_path = f"{story_dir}_story"
     story_zip = f"{story_dir}_story.zip"
@@ -32,8 +31,6 @@ def final_page(client):
         download_button = st.download_button(
             label="Download story", data=fp, file_name=story_zip, mime="application/zip"
         )
-
-
 
     generate_video = st.button(label="Generate video")
 

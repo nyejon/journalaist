@@ -13,7 +13,6 @@ def reset_state():
         del st.session_state[key]
 
 
-
 # Get the API key from the environment variables or the user
 api_key = os.getenv("MISTRAL_API_KEY")
 if not api_key:

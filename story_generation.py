@@ -1,16 +1,10 @@
-import os
 import streamlit as st
 
-from mistralai import Mistral, UserMessage
+from mistralai import UserMessage
 import streamlit as st
 import os
 
 import prompts
-
-import shutil
-from pathlib import Path
-from markdown_formatter import markdown_insert_images
-
 
 
 def story_generation(client):
@@ -22,7 +16,7 @@ def story_generation(client):
     # Add header container
     st.title("Your Personal JournalAIst")
     st.write(
-    """
+        """
         ### Please select the story type you would like me to write for you.
     """
     )
@@ -73,8 +67,6 @@ def story_generation(client):
             for message in st.session_state.messages:
                 f.write(f"{message.role}: {message.content}\n")
 
-
-
         # Clear conversation history
         conversation_log = st.session_state.messages
         st.session_state.messages = []
@@ -88,18 +80,18 @@ def story_generation(client):
 
         # Use the Mistral API to generate a story based on the conversation log
 
-        #story_prompt = f"Write a short, evocative story based on the following conversation log. Use markdown formatting where appropriate:\n\n{conversation_text}\n\nStory:"
+        # story_prompt = f"Write a short, evocative story based on the following conversation log. Use markdown formatting where appropriate:\n\n{conversation_text}\n\nStory:"
         story_prompt_paths = {
             "article": "alt_prompts/story_teller/article.md",
             "blog post": "alt_prompts/story_teller/blog_post.md",
-            "short story": "alt_prompts/story_teller/short_story.md"
+            "short story": "alt_prompts/story_teller/short_story.md",
         }
 
         story_prompt = prompts.render_template_from_file(
-            story_prompt_paths[st.session_state.CONFIG['story_type']],
-            #style=st.session_state.CONFIG['style'],
-            #viewpoint=st.session_state.CONFIG['viewpoint'],
-            #story_type=st.session_state.CONFIG['story_type'],
+            story_prompt_paths[st.session_state.CONFIG["story_type"]],
+            # style=st.session_state.CONFIG['style'],
+            # viewpoint=st.session_state.CONFIG['viewpoint'],
+            # story_type=st.session_state.CONFIG['story_type'],
             background_info_interview=conversation_text,
             # TODO add pictures
             picture_information=st.session_state.picture_information,
@@ -117,8 +109,6 @@ def story_generation(client):
         print(f"Saving story to stories/{st.session_state.session_id}/story.md")
         with open(f"stories/{st.session_state.session_id}/story.md", "w") as f:
             f.write(story)
-
-
 
         st.session_state.page = "final"
         st.rerun()

@@ -10,6 +10,7 @@ from mistralai import (
 
 PIXTRAL_TEMPERATURE = 0.3
 
+
 def encode_image_base64(image_file):
     img = Image.open(image_file).convert("RGB")
     img = img.resize((512, int(512 * img.height / img.width)))
@@ -19,19 +20,24 @@ def encode_image_base64(image_file):
     return base64.b64encode(img_bytes.read()).decode("utf-8")
 
 
-
 def handle_files(files: list, client: Mistral, model: str):
     content = []
     for file in files:
         if file.type.startswith("image/jpeg"):
             list_image = encode_image_base64(file)
             content.append(
-                {"type": "image_url", "image_url": f"data:image/jpeg;base64,{list_image}"}
+                {
+                    "type": "image_url",
+                    "image_url": f"data:image/jpeg;base64,{list_image}",
+                }
             )
         elif file.type.startswith("image/png"):
             list_image = encode_image_base64(file)
             content.append(
-                {"type": "image_url", "image_url": f"data:image/png;base64,{list_image}"}
+                {
+                    "type": "image_url",
+                    "image_url": f"data:image/png;base64,{list_image}",
+                }
             )
 
     system_messages = SystemMessage(
