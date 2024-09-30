@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "pillow-ai"
+name = "journalaist"
 version = "0.1.0"
 description = ""
-authors = ["Axel <axel@axel.com>"]
+authors = ["Jonathan Nye <contact@denyed.xyz>", "Ferdinand Schenck <fwschenck@gmail.com>", "Axel <axel@axel.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
