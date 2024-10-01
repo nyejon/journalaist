@@ -34,7 +34,7 @@ else:
 
 # Initialize the model in session state if it's not already set
 if "mistral_model" not in st.session_state:
-    st.session_state["mistral_model"] = "mistral-large-latest"
+    st.session_state["mistral_model"] = "mistral-small-latest"
 if "pixtral_model" not in st.session_state:
     st.session_state["pixtral_model"] = "pixtral-12b-2409"
 
