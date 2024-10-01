@@ -17,6 +17,7 @@ def interview(client: Mistral):
     st.write("""
             Hi! What did you get up to today?
             Upload some pictures and give me a short description of your day.
+            Click on 'End Conversation' to move onto story generation.
     """)
 
     if st.session_state.photo_upload is None:
