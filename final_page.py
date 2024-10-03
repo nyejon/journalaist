@@ -32,6 +32,7 @@ def final_page(client):
             label="Download story", data=fp, file_name=story_zip, mime="application/zip"
         )
 
+    """
     generate_video = st.button(label="Generate video")
 
     if generate_video:
@@ -63,3 +64,4 @@ def final_page(client):
 
     if "video_generated" in st.session_state:
         st.video(st.session_state.video_path)
+    """

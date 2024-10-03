@@ -63,19 +63,6 @@ def interview(client: Mistral):
                 image_location = f"./stories/{st.session_state.session_id}/picture_{st.session_state.n_pictures}.jpg"
                 image.convert("RGB").save(image_location)
 
-                ## uncomment to try upload to API
-                """
-                with open(image_location, "rb") as file:
-                    url = "https://api.imgbb.com/1/upload"
-                    payload = {
-                        "key": os.getenv("IMGBB_API_KEY"),
-                        "image": base64.b64encode(file.read()),
-                    }
-                    res = requests.post(url, payload)
-
-                print(res)
-                """
-
 
             file_info = mistral_files.handle_files(
                 st.session_state.uploaded_files,
