@@ -47,12 +47,13 @@ def story_generation(client):
     """
     st.session_state.CONFIG["story_type"] = st.radio(
         "Select the story type:",
-        ["blog post", "short story", "article"],
-        index=["blog post", "short story", "article"].index(
+        ["journal entry", "blog post", "short story", "article"],
+        index=["journal entry", "blog post", "short story", "article"].index(
             st.session_state.CONFIG["story_type"]
         ),
     )
 
+    
     start_writing_button = st.empty()
     start_writing = start_writing_button.button("Start writing!")
 
@@ -85,6 +86,7 @@ def story_generation(client):
             "article": "alt_prompts/story_teller/article.md",
             "blog post": "alt_prompts/story_teller/blog_post.md",
             "short story": "alt_prompts/story_teller/short_story.md",
+            "journal entry": "alt_prompts/story_teller/journal_entry.md",
         }
 
         story_prompt = prompts.render_template_from_file(
