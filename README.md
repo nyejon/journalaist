@@ -9,3 +9,6 @@ Run with:
 ```
 streamlit run journalaist.py
 ```
+
+
+This assumes you have your mistral API key as an env variable called `MISTRAL_API_KEY`. If not you will be prompted for the key. 
